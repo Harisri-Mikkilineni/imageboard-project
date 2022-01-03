@@ -2,9 +2,19 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Imageboard</title>
+     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>My Imageboard</h1>
+    <div id="main">
+    <div class="wrapper">  
+            <div v-for='image in images'>
+               <img :src="image.url"/> {{image.title}}
+            </div>
+    </div>
+    </div>
+    <footer>Made with 💗 by Harisri.</footer>
     <script src="/js/app.js" type="module" crossorigin="use-credentials"></script>
 </body>
 </html>
