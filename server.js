@@ -15,7 +15,7 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
 
     const { username, title, description } = req.body;
     const { filename } = req.file;
-    const fileurl = "https://onionxib.s3.amazonaws.com/" + filename;
+    const fileurl = "https://spicedling.s3.amazonaws.com/" + filename;
 
     console.log("username:", req.body.username);
     console.log("title:", req.body.title);
@@ -25,6 +25,7 @@ app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
     db.addImages(fileurl, username, title, description)
         .then(({ rows }) => {
             console.log("images added into db:", rows);
+            res.json(rows);
         })
         .catch((err) => {
             console.log("error in adding images to db:", err);
