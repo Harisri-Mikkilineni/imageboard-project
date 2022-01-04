@@ -33,8 +33,7 @@ Vue.createApp({
                 .then((res) => res.json())
                 .then((result) => {
                     console.log("result: ", result);
-                    this.images.unshift(result[0]);
-                    //here
+                    this.images.unshift(result.image);
                 })
                 .catch((err) => {
                     console.log("error uploading new image: ", err);
