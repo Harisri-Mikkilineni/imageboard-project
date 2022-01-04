@@ -2,16 +2,30 @@
     background-color: #a6d4d8;
     font-family: Georgia, "Times New Roman", Times, serif;
     color: #2e016c;
+    max-width: auto;
 }
 
 .wrapper {
     display: grid;
-    grid-template-columns: 200px 200px 200px;
-    border-color: blue;
+    padding: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.card {
+    border: solid black 1px;
+    margin: 0 auto;
+    padding: 5px;
+    background-color: #fff;
+}
+p {
+    text-align: center;
+    background-color: #fff;
+    font-family: Snell Roundhand, cursive;
+    font-weight: bold;
 }
 
 img {
-    width: 150px;
+    width: 250px;
+    height: 200px;
 }
 
 footer {
