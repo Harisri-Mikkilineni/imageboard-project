@@ -8,6 +8,8 @@
 <body>
     <h1>My Imageboard</h1>
     <div id="main">
+        <first-component v-if="imageSelected" :id="imageSelected" @close="closeComponent"></first-component>
+       
         <form>
             <label for="title">Title</label>
             <input v-model="title" type="text" name="title" placeholder="title"> 
@@ -22,7 +24,7 @@
 
 
     <div class="wrapper">  
-            <div  class = "card" v-for='image in images'>
+            <div  class = "card" v-for='image in images' @click="clickImage(image.id)" >
                <img :src="image.url" :alt="image.title"/>
             <p>{{image.title}}</p>
             </div>

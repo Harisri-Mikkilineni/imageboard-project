@@ -17,16 +17,39 @@
     padding: 5px;
     background-color: #fff;
 }
+.image_pop_up {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: pink;
+    border: solid black 1px;
+    margin-left: 350px;
+    margin-top: 60px;
+    height: 500px;
+    width: 750px;
+    position: absolute;
+    z-index: 1;
+}
+
 p {
     text-align: center;
     background-color: #fff;
     font-family: Snell Roundhand, cursive;
     font-weight: bold;
+    background-color: transparent;
 }
 
 img {
     width: 250px;
     height: 200px;
+}
+button {
+    background-color: lightgray;
+    cursor: pointer;
+}
+h3 {
+    background-color: transparent;
 }
 
 footer {

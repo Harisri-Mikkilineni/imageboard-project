@@ -41,6 +41,16 @@ app.get("/images", (req, res) => {
         .catch((err) => console.log("err in getting images:", err));
 });
 
+app.get("/selectedimage/:id", (req, res) => {
+    db.getImageById(req.params.id)
+        .then(({ rows }) => {
+            console.log("Image info:", rows[0]);
+            res.json(rows[0]);
+            // console.log("Get image by id:", imageInfo);
+        })
+        .catch((err) => console.log("err in getting image by id:", err));
+});
+
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });

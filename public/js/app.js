@@ -1,4 +1,5 @@
 import * as Vue from "./vue.js";
+import firstComponent from "./firstComponent.js";
 
 Vue.createApp({
     data() {
@@ -8,6 +9,7 @@ Vue.createApp({
             description: "",
             username: "",
             file: null,
+            imageSelected: "",
         };
     },
     //api call
@@ -17,6 +19,9 @@ Vue.createApp({
             .then((data) => {
                 this.images = data;
             });
+    },
+    components: {
+        "first-component": firstComponent,
     },
     methods: {
         clickHandler: function () {
@@ -43,6 +48,16 @@ Vue.createApp({
             // console.log("File selected:", e);
             this.file = e.target.files[0];
             //now submit these values to server
+        },
+        clickImage(clickedId) {
+            console.log("user clicked on image with id:", clickedId);
+            this.imageSelected = clickedId;
+        },
+        closeComponent() {
+            console.log(
+                "the component has emitted that it should be closed :D"
+            );
+            this.imageSelected = "";
         },
     },
 }).mount("#main");
