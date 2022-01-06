@@ -1,31 +1,61 @@
 * {
-    background-color: #a6d4d8;
+    background-color: rgb(152, 152, 158);
     font-family: Georgia, "Times New Roman", Times, serif;
-    color: #2e016c;
-    max-width: auto;
+    color: black;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding: 5px;
+}
+#title,
+#description,
+#username {
+    border: solid gray 2px;
+    border-radius: 10%;
+    max-width: 50%;
 }
 
 .wrapper {
     display: grid;
     padding: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 1em;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .card {
     border: solid black 1px;
-    margin: 0 auto;
+    border-radius: 15px;
+
     padding: 5px;
     background-color: #fff;
+}
+.imagecontainer {
+    background-size: cover;
+    height: 200px;
+    width: 100%;
+    background-position: center center;
+}
+img {
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
 }
 .image_pop_up {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: pink;
-    border: solid black 1px;
+    background-color: rgb(152, 152, 158);
+    border: solid black 3px;
     margin-left: 350px;
-    margin-top: 60px;
+    margin-top: 1px;
     height: 500px;
     width: 750px;
     position: absolute;
@@ -40,14 +70,14 @@ p {
     background-color: transparent;
 }
 
-img {
-    width: 250px;
-    height: 200px;
-}
 button {
     background-color: lightgray;
     cursor: pointer;
 }
+h2 {
+    text-align: center;
+}
+
 h3 {
     background-color: transparent;
 }

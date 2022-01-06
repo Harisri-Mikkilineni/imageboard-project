@@ -22,7 +22,7 @@ module.exports.getImageById = (id) => {
 
 module.exports.addImages = (fileurl, username, title, description) => {
     const q = `INSERT INTO images (url, username, title, description) 
-    VALUES($1, $2, $3, $4) RETURNING url, username, title, description`;
+    VALUES($1, $2, $3, $4) RETURNING url, username, title, description, id`;
     const params = [fileurl, username, title, description];
     return db.query(q, params);
 };

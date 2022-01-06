@@ -28,6 +28,7 @@ const firstComponent = {
     },
     template: `<div class="image_pop_up">
     
+    
     <img :src="imageSelected.url" :alt="imageSelected.title"/>
     <p>{{imageSelected.title}}</p> 
     <p>{{imageSelected.description}}</p> 
