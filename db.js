@@ -10,7 +10,7 @@ const db = spicedPg(
 );
 
 module.exports.getImages = () => {
-    const q = "SELECT * FROM images ORDER BY id DESC";
+    const q = "SELECT * FROM images ORDER BY id DESC LIMIT 8";
     return db.query(q);
 };
 
@@ -24,5 +24,31 @@ module.exports.addImages = (fileurl, username, title, description) => {
     const q = `INSERT INTO images (url, username, title, description) 
     VALUES($1, $2, $3, $4) RETURNING url, username, title, description, id`;
     const params = [fileurl, username, title, description];
+    return db.query(q, params);
+};
+
+module.exports.getMoreImages = (lowestIdOnScreen) => {
+    const q = `SELECT url, title, id ,(SELECT id
+  FROM images
+  ORDER BY id ASC
+LIMIT 1) AS "lowestId" 
+FROM images
+WHERE id < $1
+ORDER BY id DESC
+LIMIT 8`;
+    const params = [lowestIdOnScreen];
+    return db.query(q, params);
+};
+
+module.exports.getComments = (image_id) => {
+    const q = `SELECT * FROM comments WHERE image_id=$1`;
+    const params = [image_id];
+    return db.query(q, params);
+};
+
+module.exports.addComment = (image_id, username, comment_text) => {
+    const q = `INSERT INTO comments(image_id,username,comment_text)
+    VALUES($1,$2,$3) RETURNING image_id`;
+    const params = [image_id, username, comment_text];
     return db.query(q, params);
 };

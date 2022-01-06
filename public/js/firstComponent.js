@@ -1,3 +1,5 @@
+import secondComponent from "./secondComponent.js";
+
 const firstComponent = {
     data() {
         return {
@@ -19,6 +21,9 @@ const firstComponent = {
                 this.imageSelected = data;
             });
     },
+    components: {
+        "second-component": secondComponent,
+    },
     methods: {
         notifyParent() {
             console.log("first component here the parent app should do sth");
@@ -26,14 +31,13 @@ const firstComponent = {
             this.$emit("close");
         },
     },
-    template: `<div class="image_pop_up">
-    
-    
+    template: `<div class="image_pop_up"> 
     <img :src="imageSelected.url" :alt="imageSelected.title"/>
     <p>{{imageSelected.title}}</p> 
     <p>{{imageSelected.description}}</p> 
-    <h3>Uploaded by {{imageSelected.username}}, on {{imageSelected.created_at}}</h3>
+    <h4>Uploaded by {{imageSelected.username}}, on {{imageSelected.created_at}}</h4>
     <button @click="notifyParent">X</button>
+    <second-component :imageId="id"></second-component>
     </div>`,
 };
 

@@ -51,6 +51,39 @@ app.get("/selectedimage/:id", (req, res) => {
         .catch((err) => console.log("err in getting image by id:", err));
 });
 
+app.get("/getmoreimages/:lowestIdOnScreen", (req, res) => {
+    console.log("params:", req.params);
+    db.getMoreImages(req.params.lowestIdOnScreen)
+        .then(({ rows }) => {
+            res.json(rows);
+            console.log("more rows:", rows);
+        })
+        .catch((err) => console.log("err in getting more images:", err));
+});
+
+app.get("/comments/:imageId", (req, res) => {
+    console.log("params:", req.params.imageId);
+    db.getComments(req.params.imageId)
+        .then(({ rows }) => {
+            console.log("comments:", rows);
+            res.json(rows);
+        })
+        .catch((err) => console.log("err in getting comments:", err));
+});
+
+app.post("/comment", (req, res) => {
+    console.log("req.body:", req.body);
+    const { image_id, username, comment_text } = req.body;
+    db.addComment(image_id, username, comment_text)
+        .then(({ rows }) => {
+            console.log("comment added into db:", rows);
+            res.json({ comment: rows[0] });
+        })
+        .catch((err) => {
+            console.log("error in adding comments to db:", err);
+        });
+});
+
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });

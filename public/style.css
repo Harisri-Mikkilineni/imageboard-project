@@ -56,7 +56,7 @@ img {
     border: solid black 3px;
     margin-left: 350px;
     margin-top: 1px;
-    height: 500px;
+    height: 700px;
     width: 750px;
     position: absolute;
     z-index: 1;
@@ -84,6 +84,7 @@ h3 {
 
 footer {
     position: fixed;
+    margin-left: 45%;
     bottom: 0;
     font-size: 10px;
 }

@@ -10,6 +10,7 @@ Vue.createApp({
             username: "",
             file: null,
             imageSelected: "",
+            showMoreBtn: false,
         };
     },
     //api call
@@ -58,6 +59,26 @@ Vue.createApp({
                 "the component has emitted that it should be closed :D"
             );
             this.imageSelected = "";
+        },
+
+        moreImagesHandler: function () {
+            console.log("user clicked on More button:", this.images);
+            const offset = this.images[this.images.length - 1].id;
+            fetch(`/getmoreimages/${offset}`)
+                .then((resp) => resp.json())
+                .then((data) => {
+                    console.log("data after more button clicked:", data);
+                    for (let i = 0; i < data.length; i++) {
+                        this.images.push(data[i]);
+                    }
+                    if (
+                        this.images[this.images.length - 1].id ===
+                        data[data.length - 1].lowestId
+                    ) {
+                        this.showMoreBtn = false;
+                    }
+                })
+                .catch(console.log("error in more button display"));
         },
     },
 }).mount("#main");
