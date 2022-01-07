@@ -10,7 +10,7 @@ Vue.createApp({
             username: "",
             file: null,
             imageSelected: "",
-            showMoreBtn: false,
+            showMorebtn: true,
         };
     },
     //api call
@@ -75,7 +75,7 @@ Vue.createApp({
                         this.images[this.images.length - 1].id ===
                         data[data.length - 1].lowestId
                     ) {
-                        this.showMoreBtn = false;
+                        this.showMorebtn = false;
                     }
                 })
                 .catch(console.log("error in more button display"));

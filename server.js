@@ -4,6 +4,7 @@ const app = express();
 const db = require("./db");
 const { uploader } = require("./upload");
 const s3 = require("./s3");
+const moment = require("moment");
 
 app.use(express.static("./public"));
 
@@ -44,6 +45,12 @@ app.get("/images", (req, res) => {
 app.get("/selectedimage/:id", (req, res) => {
     db.getImageById(req.params.id)
         .then(({ rows }) => {
+            rows.forEach(function (row) {
+                row.created_at = moment(row.created_at).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                );
+                console.log("created at:", row.created_at);
+            });
             console.log("Image info:", rows[0]);
             res.json(rows[0]);
             // console.log("Get image by id:", imageInfo);
@@ -65,6 +72,13 @@ app.get("/comments/:imageId", (req, res) => {
     console.log("params:", req.params.imageId);
     db.getComments(req.params.imageId)
         .then(({ rows }) => {
+            rows.forEach(function (row) {
+                row.created_at = moment(row.created_at).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                );
+                console.log("created at:", row.created_at);
+            });
+
             console.log("comments:", rows);
             res.json(rows);
         })
@@ -76,6 +90,12 @@ app.post("/comment", (req, res) => {
     const { image_id, username, comment_text } = req.body;
     db.addComment(image_id, username, comment_text)
         .then(({ rows }) => {
+            rows.forEach(function (row) {
+                row.created_at = moment(row.created_at).format(
+                    "MMMM Do YYYY, h:mm:ss a"
+                );
+                console.log("created at:", row.created_at);
+            });
             console.log("comment added into db:", rows);
             res.json({ comment: rows[0] });
         })

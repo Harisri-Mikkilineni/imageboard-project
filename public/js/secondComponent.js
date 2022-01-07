@@ -37,7 +37,7 @@ const secondComponent = {
                 .then((result) => {
                     console.log("result: ", result);
                     console.log("Comments array 1: ", this.comments);
-                    this.comments.unshift(result);
+                    this.comments.unshift(result.comment);
                     console.log("Comments array 2: ", this.comments);
                 })
                 .catch((err) => {

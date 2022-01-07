@@ -2,6 +2,7 @@
     background-color: rgb(152, 152, 158);
     font-family: Georgia, "Times New Roman", Times, serif;
     color: black;
+    font-family: Snell Roundhand, cursive;
 }
 
 form {
@@ -80,6 +81,13 @@ h2 {
 
 h3 {
     background-color: transparent;
+}
+.xBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
 }
 
 footer {

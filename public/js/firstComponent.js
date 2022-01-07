@@ -36,7 +36,7 @@ const firstComponent = {
     <p>{{imageSelected.title}}</p> 
     <p>{{imageSelected.description}}</p> 
     <h4>Uploaded by {{imageSelected.username}}, on {{imageSelected.created_at}}</h4>
-    <button @click="notifyParent">X</button>
+    <button class= "xBtn" @click="notifyParent">X</button>
     <second-component :imageId="id"></second-component>
     </div>`,
 };
