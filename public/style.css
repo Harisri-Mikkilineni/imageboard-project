@@ -59,7 +59,7 @@ img {
     margin-top: 1px;
     height: 700px;
     width: 750px;
-    position: absolute;
+    position: fixed;
     z-index: 1;
 }
 
