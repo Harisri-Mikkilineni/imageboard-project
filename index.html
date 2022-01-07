@@ -8,15 +8,14 @@
 <body>
      <div id="main">
         <first-component v-if="imageSelected" :id="imageSelected" @close="closeComponent"></first-component>
-    <h2>I Love Images</h2>
+    <h2> Rustic Vintage Photography</h2>
      <form>
             <input v-model="title" id ="title" type="text" name="title" placeholder="title"> 
              <input v-model="description" id ="description" type="text" name="description" placeholder="description">
              <input v-model="username" id ="username" type="text" name="username" placeholder="username">
-            <input @change="fileSelectHandler" type="file" name="file" accept="image/*">
-            <button @click.prevent="clickHandler">Upload</button>
-        </form>
-
+            <input class ="file" @change="fileSelectHandler" type="file" name="file" accept="image/*">
+            <button class="uploadbtn" @click.prevent="clickHandler">Upload</button>
+    </form>
     <div class="wrapper">  
             <div  class = "card" v-for='image in images' @click="clickImage(image.id)" :key="image.id" >
                 <div class="imagecontainer" v-bind:style="{backgroundImage: 'url(' + image.url + ')'}"></div>
@@ -24,7 +23,6 @@
             <p>{{image.title}}</p>
             </div>
     </div>
-    
         <button class= "moreBtn" v-if="showMorebtn" @click="moreImagesHandler">More</button>
     </div>
     <footer>Made with 💗 by Harisri.</footer>

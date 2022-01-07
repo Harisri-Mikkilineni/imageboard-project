@@ -8,10 +8,26 @@
 form {
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
+    justify-items: center;
     margin-left: 100px;
     margin-right: 100px;
     padding: 5px;
+}
+input {
+    margin-left: 2px;
+    color: black;
+}
+.uploadbtn {
+    border: solid gray 2px;
+    border-radius: 10%;
+}
+
+.file {
+    background-color: rgb(152, 152, 158);
+    border: solid gray 2px;
+    border-radius: 10%;
+    margin-right: 2px;
 }
 #title,
 #description,
@@ -25,15 +41,14 @@ form {
     display: grid;
     padding: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-column-gap: 1px;
-    grid-row-gap: 1px;
+    grid-column-gap: 3px;
+    grid-row-gap: 3px;
     margin-left: auto;
     margin-right: auto;
 }
 .card {
     border: solid black 1px;
     border-radius: 15px;
-
     padding: 5px;
     background-color: #fff;
 }
